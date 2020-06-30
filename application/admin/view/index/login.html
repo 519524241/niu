@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>梦中PHP管理后台--DreamPHP系列</title>
+	<link rel="shortcut icon" type="image/x-icon" href="img/logo.jpg" />
+	<link rel="stylesheet" href="__STATIC__/admin/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="__STATIC__/admin/css/main.css" />
+</head>
+<body>
+	<div class="container form">
+		<h1 class="title">登录<small>梦中PHP后台</small></h1>
+		<form action="#">
+			<div class="form-group">
+				<label for="username" class="control-label">用户名</label>
+				<input type="text" class="form-control" id="username" name="username" placeholder="用户名" value="" />
+			</div>
+			<div class="form-group">
+				<label for="password" class="control-label">密码</label>
+				<input type="password" class="form-control" id="password" name="password" placeholder="密码" />
+			</div>
+			<div class="form-group">
+				<button id="login" class="btn btn-primary btn-block">登录</button>
+				<a href="/admin/register">注册</a>
+			</div>
+		</form>
+	</div>
+	
+	<div class="footer">
+		<p>Copyright 2018 http://www.dreamphp.com.cn/ All Rights Reserved</p>
+	</div>
+	
+	<script src="__STATIC__/admin/js/jquery-3.3.1.min.js"></script>
+	<script src="__STATIC__/admin/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$('#login').click(function () {
+			console.dir($('form').serialize());
+			
+			$.ajax({
+				url:"{:url('admin/index/login')}",
+				type:'post',
+				data:$('form').serialize(),
+				dataType:'json',
+				success:function (res) {
+					console.dir(res)
+					if (res.code==1) {
+						alert('登录成功');
+						window.location.href=res.url;
+					} else {
+						alert(res.msg);
+					}
+				}
+			})
+			return false;
+		})
+	</script>
+</body>
+</html>
