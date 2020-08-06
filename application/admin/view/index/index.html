@@ -33,15 +33,16 @@
 	<div class="container body">
 		<div class="col-xs-2">
 			<div class="list-group">
-				<a href="#" class="list-group-item">栏目列表</a>
-				<a href="#" class="list-group-item">栏目添加</a>
-				<a href="#" class="list-group-item">文章列表</a>
-				<a href="#" class="list-group-item">文章添加</a>
+				<a href="/admin/cate" class="list-group-item">栏目列表</a>
+				<a href="/admin/cateAdd" class="list-group-item">栏目添加</a>
+				<a href="/admin/articlelist" class="list-group-item">文章列表</a>
+				<a href="/admin/articlelist/add/index" class="list-group-item">文章添加</a>
 				<a href="#" class="list-group-item">会员列表</a>
 				<a href="#" class="list-group-item">会员添加</a>
 				<a href="#" class="list-group-item">系统设置</a>
 			</div>
 		</div>
+		{block name="body"}
 		<div class="col-xs-10">
 			<div class="desktop">
 				<p class="description">欢迎使用梦中PHP管理后台！</p>
@@ -68,6 +69,7 @@
 				</tbody>
 			</table>
 		</div>
+		{/block}
 	</div>
 	
 	<div class="footer">
@@ -76,5 +78,7 @@
 	
 	<script src="__STATIC__/admin/js/jquery-3.3.1.min.js"></script>
 	<script src="__STATIC__/admin/js/bootstrap.min.js"></script>
+	{block name="script"}
+	{/block}
 </body>
 </html>

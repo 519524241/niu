@@ -1,0 +1,44 @@
+{extend name="index/index"}
+
+{block name="body"}
+	<div class="col-xs-10">
+			<ol class="breadcrumb">
+				导航位置：<li><a href="#">栏目添加</a></li>
+			</ol>
+			<h2>栏目添加</h2>
+			<form action="/admin/cateEdit" method="post">
+				<div class="form-group">
+					<label for="catename" class="control-label">栏目名称</label>
+					<input type="hidden" name="id" value="{$data.id}">
+					<input type="text" class="form-control" id="catename" name="catename" value="{$data.catename}" placeholder="栏目名称" />
+				</div>
+				<div class="form-group">
+					<button class="add btn btn-primary">添加</button>
+					<button class="btn btn-success" type="reset">重置</button>
+				</div>
+			</form>
+		</div>
+{/block}
+
+{block name="script"}
+	<script type="text/javascript">
+		$('.add').click(function(){
+		console.dir('123');
+
+			$.ajax({
+				url:"/admin/cateEdit",
+				type:'post',
+				data:$('form').serialize(),
+				success:function(res){
+					if (res.code==1) {
+						alert(res.msg);
+						window.location.href="/admin/cate";
+					} else {
+						alert(res);
+					}
+				}
+			})
+			return false;
+		})
+	</script>
+{/block}

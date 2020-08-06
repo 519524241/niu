@@ -1,0 +1,40 @@
+{extend name="index/index"}
+
+{block name="body"}
+	<div class="col-xs-10">
+			<ol class="breadcrumb">
+				导航位置：<li><a href="#">文章添加</a></li>
+			</ol>
+			<h2>文章添加<small>无数据</small></h2>
+			<form action="/admin/articlelist/add" method="post">
+				<div class="form-group">
+					<label for="title" class="control-label">标题</label>
+					<input type="text" class="form-control" id="title" name="title" placeholder="文章标题" />
+				</div>
+				<div class="form-group">
+					<label for="cateid" class="control-label">所属栏目</label>
+					<select class="form-control" id="cateid" name="cate_id">
+						<option value="">请选择</option>
+						{foreach $data as $v}
+						<option value="{$v.id}">{$v.catename}</option>
+						{/foreach}
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="content" class="control-label">内容</label>
+					<textarea id="content" name="content" class="form-control"></textarea>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-primary">添加</button>
+					<button class="btn btn-warning" type="reset">重置</button>
+				</div>
+			</form>
+	</div>
+{/block}
+
+{block name="script"}
+	<script type="text/javascript">
+	console.dir('123');
+		
+	</script>
+{/block}

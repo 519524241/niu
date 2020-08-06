@@ -1,0 +1,56 @@
+{extend name="index/index"}
+
+{block name="body"}
+	<div class="col-xs-10">
+			<ol class="breadcrumb">
+				导航位置：<li><a href="#">文章添加</a></li>
+			</ol>
+			<h2>文章添加<small>无数据</small></h2>
+			<form action="" method="post">
+				<div class="form-group">
+					<label for="title" class="control-label">标题</label>
+					<input type="hidden" name="id" value="{$articlelist.id}">
+					<input type="text" class="form-control" id="title" value="{$articlelist.title}" name="title" placeholder="文章标题" />
+				</div>
+				<div class="form-group">
+					<label for="cateid" class="control-label">所属栏目</label>
+					<select class="form-control" id="cateid" name="cate_id">
+						<option value="">请选择</option>
+						{foreach $data as $v}
+						{if $v.id==$articlelist.cate_id}
+						<option value="{$v.id}" selected="">{$v.catename}</option>
+						{else /}
+						<option value="{$v.id}">{$v.catename}</option>
+						{/if}
+						{/foreach}
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="content" class="control-label">内容</label>
+					<textarea id="content" name="content" class="form-control">{$articlelist.content}</textarea>
+				</div>
+				<div class="form-group">
+					<button class="edit btn-primary">修改</button>
+					<button class="btn btn-warning" type="reset">重置</button>
+				</div>
+			</form>
+	</div>
+{/block}
+
+{block name="script"}
+	<script type="text/javascript">
+		$('.edit').click(function(){
+			console.dir(123);
+			$.ajax({
+				url:'/admin/articlelistEdit',
+				type:'post',
+				data:$('form').serialize(),
+				dataType:'json',
+				success:function(res){
+					console.dir(res);
+				}
+			})
+			return false;
+		})		
+	</script>
+{/block}
